@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 
 public class Background implements Updateable, Renderable{
 	private static double width = Window.getWinWidth();
-	private static double height = Window.getWinHeight();
+	private static double height = Window.getWinHeight() * 2;
 	private static double x = 0;
 	private double y;
 	
@@ -26,7 +26,7 @@ public class Background implements Updateable, Renderable{
 	
 	private static BufferedImage background;
 	
-	private double speed = 100;
+	private double speed = 300;
 	
 	public Background(double y) throws IOException{
 		this.y = y;
@@ -71,7 +71,7 @@ public class Background implements Updateable, Renderable{
 	public void update(){
 		y += speed * FPS.getDeltaTime();
 		
-		if(y >= Window.getWinHeight())
+		if(y  >= 0)
 			y = -Window.getWinHeight();
 	}
 }
