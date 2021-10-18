@@ -14,6 +14,10 @@ public class Input implements KeyListener{
 
 	@Override
 	public void keyTyped(KeyEvent e){
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e){	
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 			keys[LEFT] = true;
 		else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
@@ -27,7 +31,7 @@ public class Input implements KeyListener{
 	}
 
 	@Override
-	public void keyPressed(KeyEvent e){	
+	public void keyReleased(KeyEvent e){
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 			keys[LEFT] = false;
 		else if(e.getKeyCode() == KeyEvent.VK_RIGHT)
@@ -38,10 +42,5 @@ public class Input implements KeyListener{
 			keys[DOWN] = false;
 		else if(e.getKeyCode() == KeyEvent.VK_SPACE)
 			keys[SPACE] = false;
-	}
-
-	@Override
-	public void keyReleased(KeyEvent e){
-	
 	}
 }

@@ -20,7 +20,7 @@ public class Renderer extends JPanel{
 		Graphics2D g2d = (Graphics2D)g;
 		
 		for(Renderable object: renderableObjects)
-			object.draw(g2d);
+			object.drawSprite(g2d);
 	}
 	
 	public static void addRenderableObject(Renderable object){
@@ -34,6 +34,6 @@ public class Renderer extends JPanel{
 	
 	@Override
 	public Dimension getPreferredSize(){
-		return new Dimension((int)Window.getWinWidth() + 1, (int)Window.getWinHeight() + 1);
+		return new Dimension((int)Window.getWinWidth(), (int)Window.getWinHeight());
 	}
 }
