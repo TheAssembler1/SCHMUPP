@@ -17,6 +17,7 @@ public class Entry{
 		FPS.calcBeginTime();
 		while(runGame){
 			//update the game state
+			renderer.repaint();
 
 			//recalc delta time
 			FPS.calcDeltaTime();

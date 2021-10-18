@@ -14,16 +14,18 @@ public class Window extends JFrame{
 		Window.winName = winName;
 		Window.winWidth = winWidth;
 		Window.winHeight = winHeight;
+
+		setWindowAttributes();
 	}
 
 	public void setWindowAttributes(){
-		setLocationRelativeTo(null);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
 	public void packWindow(){
 		pack();
 		setResizable(false);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLocationRelativeTo(null);
 	}
 
 	public static double getWinWidth(){
