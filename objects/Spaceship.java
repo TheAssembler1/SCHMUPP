@@ -14,6 +14,7 @@ import update.Updateable;
 import update.Updater;
 
 import core.Input;
+import core.Timer;
 import core.FPS;
 import core.Window;
 
@@ -23,17 +24,24 @@ public class Spaceship implements Renderable, Updateable{
 	private double x;
 	private double y;
 	
-	private int layer = 1;
+	private int layer = 2;
 	
 	private static BufferedImage spaceShip;
 	
 	private double speed = 200;
+	
+	public static boolean test = true;
+	
+	private static int shootingTimerMillis = 500;
+	
+	Timer timer = new Timer(shootingTimerMillis);
 	
 	public Spaceship(double x, double y) throws IOException{
 		this.x = x;
 		this.y = y;
 		
 		spaceShip = ImageIO.read(new File("res/Spaceship.png"));
+		
 		Renderer.addRenderableObject(this);
 		Updater.addUpdateableObject(this);
 	}
@@ -69,7 +77,7 @@ public class Spaceship implements Renderable, Updateable{
 	}
 	
 	@Override
-	public void update(){
+	public void update() throws IOException{
 		if(Input.keys[Input.LEFT] && x >= 0)
 			x -= speed * FPS.getDeltaTime();
 		if(Input.keys[Input.RIGHT] && x <= Window.getWinWidth() - width)
@@ -78,5 +86,10 @@ public class Spaceship implements Renderable, Updateable{
 			y -= speed * FPS.getDeltaTime();
 		if(Input.keys[Input.DOWN] && y <= Window.getWinHeight() - height)
 			y += speed * FPS.getDeltaTime();
+		
+		if(Input.keys[Input.SPACE] && timer.isRinging()) {
+			new Bullet(x + (getWidth() / 2), y);
+			timer.resetTimer();
+		}
 	}
 }

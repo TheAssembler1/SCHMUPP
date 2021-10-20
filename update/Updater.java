@@ -1,5 +1,6 @@
 package update;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Updater{
@@ -7,7 +8,7 @@ public class Updater{
 	private static ArrayList<Updateable> addUpdateableObjects = new ArrayList<Updateable>();
 	private static ArrayList<Updateable> removeUpdateableObjects = new ArrayList<Updateable>();
 	
-	public static void update(){
+	public static void update() throws IOException{
 		for(Updateable object: updateableObjects)
 			object.update();
 		

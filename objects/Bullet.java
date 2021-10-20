@@ -16,22 +16,23 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class Background implements Updateable, Renderable{
-	private static double width = Window.getWinWidth();
-	private static double height = Window.getWinHeight() * 2;
-	private static double x = 0;
+public class Bullet implements Updateable, Renderable{
+	private static double width = 10;
+	private static double height = 10;
+	private double x;
 	private double y;
 	
-	private final int layer = 0;
+	private final int layer = 1;
 	
-	private static BufferedImage background;
+	private static BufferedImage bullet;
 	
-	private double speed = 300;
+	private static double speed = 800;
 	
-	public Background(double y) throws IOException{
+	public Bullet(double x, double y) throws IOException{
+		this.x = x - (getWidth() / 2);
 		this.y = y;
 		
-		background = ImageIO.read(new File("res/Space.png"));
+		bullet = ImageIO.read(new File("res/Bullet.png"));
 		
 		Renderer.addRenderableObject(this);
 		Updater.addUpdateableObject(this);
@@ -64,14 +65,16 @@ public class Background implements Updateable, Renderable{
 	
 	@Override
 	public BufferedImage getBufferedImage(){
-		return background;
+		return bullet;
 	}
 	
 	@Override
 	public void update() throws IOException{
-		y += speed * FPS.getDeltaTime();
+		y -= speed * FPS.getDeltaTime();
 		
-		if(y  >= 0)
-			y = -Window.getWinHeight();
+		if(y < -getHeight()) {
+			Updater.removeUpdateableObject(this);
+			Renderer.removeRenderableObject(this);
+		}
 	}
 }
