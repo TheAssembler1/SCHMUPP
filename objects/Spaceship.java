@@ -30,8 +30,6 @@ public class Spaceship implements Renderable, Updateable{
 	
 	private double speed = 200;
 	
-	public static boolean test = true;
-	
 	private static int shootingTimerMillis = 500;
 	
 	Timer timer = new Timer(shootingTimerMillis);

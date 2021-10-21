@@ -5,7 +5,7 @@ import objects.Spaceship;
 import java.io.IOException;
 
 import update.Updater;
-
+import objects.AsteroidSpawner;
 import objects.Background;
 
 public class Entry{
@@ -23,6 +23,7 @@ public class Entry{
 		
 		new Spaceship((Window.getWinWidth() / 2) - (Spaceship.width / 2), Window.getWinHeight() - 150);
 		new Background(-Window.getWinHeight());
+		new AsteroidSpawner();
 		
 		FPS.calcBeginTime();
 		while(runGame){
