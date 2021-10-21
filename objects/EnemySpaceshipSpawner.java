@@ -6,17 +6,18 @@ import core.Timer;
 import update.Updateable;
 import update.Updater;
 
-public class AsteroidSpawner implements Updateable{
-	Timer timer = new Timer(500);
+public class EnemySpaceshipSpawner implements Updateable{
+	private static final int spawnTimeMillis = 500;
+	Timer timer = new Timer(spawnTimeMillis);
 	
-	public AsteroidSpawner() {
+	public EnemySpaceshipSpawner() {
 		Updater.addUpdateableObject(this);
 	}
 
 	@Override
 	public void update() throws IOException {
 		if(timer.isRinging()) {
-			new Asteroid();
+			new EnemySpaceship();
 			timer.resetTimer();
 		}
 	}

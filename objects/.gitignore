@@ -3,3 +3,5 @@
 /Spaceship.class
 /Asteroid.class
 /AsteroidSpawner.class
+/EnemySpaceship.class
+/EnemySpaceshipSpawner.class

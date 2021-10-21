@@ -5,14 +5,13 @@ import objects.Spaceship;
 import java.io.IOException;
 
 import update.Updater;
-import objects.AsteroidSpawner;
+import objects.EnemySpaceshipSpawner;
 import objects.Background;
 
 public class Entry{
 	public static void main(String[] args) throws IOException{
 		Window window = new Window("SCHMUPP", Window.getWinWidth(), Window.getWinHeight());
 		Renderer renderer = new Renderer();
-		Updater updater = new Updater();
 
 		window.addKeyListener(new Input());
 		window.add(renderer);
@@ -23,11 +22,11 @@ public class Entry{
 		
 		new Spaceship((Window.getWinWidth() / 2) - (Spaceship.width / 2), Window.getWinHeight() - 150);
 		new Background(-Window.getWinHeight());
-		new AsteroidSpawner();
+		new EnemySpaceshipSpawner();
 		
 		FPS.calcBeginTime();
 		while(runGame){
-			updater.update();
+			Updater.update();
 			renderer.repaint();
 			FPS.calcDeltaTime();
 		}

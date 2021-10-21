@@ -17,7 +17,7 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class Asteroid implements Updateable, Renderable{
+public class EnemySpaceship implements Updateable, Renderable{
 	private double width;
 	private double height;
 	private double x;
@@ -25,17 +25,20 @@ public class Asteroid implements Updateable, Renderable{
 	
 	private final int layer = 2;
 	
-	private static BufferedImage asteroid;
+	private static BufferedImage enemySpaceShip;
 	
 	private double speed = 150;
 	
+	public int randDimensionsMax = 75;
+	public int randDimensionsMin = 35;
+	
 	Random rand = new Random();
 	
-	public Asteroid() throws IOException{
-		int dimensions = rand.nextInt(75 + 1);
+	public EnemySpaceship() throws IOException{
+		int dimensions = rand.nextInt(randDimensionsMax + 1);
 		
-		if(dimensions < 35)
-			dimensions = 35;
+		if(dimensions < randDimensionsMin)
+			dimensions = randDimensionsMin;
 		
 		width = dimensions;
 		height = dimensions;
@@ -45,7 +48,7 @@ public class Asteroid implements Updateable, Renderable{
 		
 		this.y = -getHeight();
 		
-		asteroid = ImageIO.read(new File("res/Asteroid.png"));
+		enemySpaceShip = ImageIO.read(new File("res/Enemy.png"));
 		
 		Renderer.addRenderableObject(this);
 		Updater.addUpdateableObject(this);
@@ -78,7 +81,7 @@ public class Asteroid implements Updateable, Renderable{
 	
 	@Override
 	public BufferedImage getBufferedImage(){
-		return asteroid;
+		return enemySpaceShip;
 	}
 	
 	@Override

@@ -18,7 +18,7 @@ import javax.imageio.ImageIO;
 
 public class Bullet implements Updateable, Renderable{
 	private static double width = 10;
-	private static double height = 10;
+	private static double height = 30;
 	private double x;
 	private double y;
 	
@@ -26,11 +26,11 @@ public class Bullet implements Updateable, Renderable{
 	
 	private static BufferedImage bullet;
 	
-	private static double speed = 800;
+	private static double speed = 1000;
 	
 	public Bullet(double x, double y) throws IOException{
 		this.x = x - (getWidth() / 2);
-		this.y = y;
+		this.y = y + (getHeight() / 2);
 		
 		bullet = ImageIO.read(new File("res/Bullet.png"));
 		
