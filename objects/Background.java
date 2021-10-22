@@ -28,6 +28,10 @@ public class Background implements Updateable, Renderable{
 	
 	private double speed = 300;
 	
+	private boolean drawCollisionBox = false;
+	
+	private static final String ID = "background";
+	
 	public Background(double y) throws IOException{
 		this.y = y;
 		
@@ -73,5 +77,20 @@ public class Background implements Updateable, Renderable{
 		
 		if(y  >= 0)
 			y = -Window.getWinHeight();
+	}
+
+	@Override
+	public boolean drawCollisionBox() {
+		return drawCollisionBox;
+	}
+	
+	@Override
+	public String getID() {
+		return ID;
+	}
+
+	@Override
+	public Renderable getRenderable() {
+		return this;
 	}
 }

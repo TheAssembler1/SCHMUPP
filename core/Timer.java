@@ -2,12 +2,15 @@ package core;
 
 import java.io.IOException;
 
+import render.Renderable;
 import update.Updateable;
 import update.Updater;
 
 public class Timer implements Updateable{
 	int setMillisTime = 0;
 	int beginningMillisTime;
+	
+	private static final String ID = "timer";
 	
 	public Timer(int setMillisTime) {
 		this.beginningMillisTime = setMillisTime;
@@ -28,5 +31,15 @@ public class Timer implements Updateable{
 	
 	public void resetTimer() {
 		setMillisTime = beginningMillisTime;
+	}
+
+	@Override
+	public String getID() {
+		return ID;
+	}
+
+	@Override
+	public Renderable getRenderable() {
+		return null;
 	}
 }

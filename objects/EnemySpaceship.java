@@ -34,6 +34,10 @@ public class EnemySpaceship implements Updateable, Renderable{
 	
 	Random rand = new Random();
 	
+	private boolean drawCollisionBox = true;
+	
+	private static final String ID = "enemyspaceship";
+	
 	public EnemySpaceship() throws IOException{
 		int dimensions = rand.nextInt(randDimensionsMax + 1);
 		
@@ -92,6 +96,20 @@ public class EnemySpaceship implements Updateable, Renderable{
 			Updater.removeUpdateableObject(this);
 			Renderer.removeRenderableObject(this);
 		}
-
+	}
+	
+	@Override
+	public boolean drawCollisionBox() {
+		return drawCollisionBox;
+	}
+	
+	@Override
+	public String getID() {
+		return ID;
+	}
+	
+	@Override
+	public Renderable getRenderable() {
+		return this;
 	}
 }
